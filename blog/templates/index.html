@@ -8,16 +8,17 @@
       <div class="container">
         <div class="row">
           <main class="col-md-8">
+            {% for art in articles %}
             <article class="article-post">
               <div class="article-heading">
 
-                <h1 class="article-heading-title">{{articles.title}}</h1>
+                <h1 class="article-heading-title">{{ art.title }}</h1>
                 <div class="article">
-                  <h6>作者：<a href="#">admin</a>·2017年8月9日</h6>
+                  <h6>作者：<a href="#">{{ art.author }}</a>·{{ art.date }}</h6>
                 </div>
               </div>
               <div class="article-content">
-                <p>随着 Ghost 1.0 和 Hemingway Mode 的发布，今天我们又发布了“自定义文章摘要”功能。 默认情况下，Ghost 会截取文章正文开头部分的文字（一般是55个字）作为文章摘要并显示在文章归档列表中。摘要有助于读者快速了解文章所要表达的内容。但是，如果你希望自己定</p>
+                <p>{{ art.content|truncatechars:150 }}</p>
               </div>
               <div class="article-read">
                 <button type="button" class="btn btn-info">阅读全文</button>
@@ -29,27 +30,7 @@
                 </footer>
               
             </article>
-            <article class="article-post">
-              <div class="article-heading">
-                <h1 class="article-heading-title">文章标题</h1>
-                <div class="article">
-                  <h6>作者：<a href="#">admin</a>·2017年8月9日</h6>
-                </div>
-              </div>
-              <div class="article-content">
-                <p>随着 Ghost 1.0 和 Hemingway Mode 的发布，今天我们又发布了“自定义文章摘要”功能。 默认情况下，Ghost 会截取文章正文开头部分的文字（一般是55个字）作为文章摘要并显示在文章归档列表中。摘要有助于读者快速了解文章所要表达的内容。但是，如果你希望自己定</p>
-              </div>
-              <div class="article-read">
-                <button type="button" class="btn btn-info">阅读全文</button>
-              </div>
-            
-                <footer>
-                    <HR>
-                  <span class="glyphicon glyphicon-tags"></span>
-                  <span class="tag-style">java</span>
-                </footer>
-              
-            </article>
+            {% endfor %}
           </main>
           <aside class="col-md-4">
             <div class="widget">
