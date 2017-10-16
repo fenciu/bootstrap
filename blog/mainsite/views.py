@@ -8,7 +8,8 @@ def index(request):
     #return render_to_response('index.html',articles)
     #print (articles[0]['title'])
     return render(request,'index.html',{'articles':articles})
-def article_de(request):
-    article_id=request.GET.get('id')
-    print(article_id)
-    return render(request,'article.html')
+def article_de(request,param1):
+    
+    
+    articles_dea=article.objects.get(id=param1)
+    return render(request,'article.html',{'articles_dea':articles_dea})
