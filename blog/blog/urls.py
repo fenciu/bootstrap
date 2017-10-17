@@ -19,9 +19,10 @@ from mainsite.views import index,article_de
 from django.conf import settings
 from django.conf.urls.static import static
 import xadmin
+import ckeditor_uploader
 urlpatterns = [
     url(r'^$',index),
     url(r'^xadmin/', xadmin.site.urls),
     url(r'^article/id/(\d*)/$',article_de),
-    
+    #url(r'^ckeditor/',ckeditor_uploader.urls)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
