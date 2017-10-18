@@ -1,7 +1,16 @@
 
 {% extends "base.html" %}
     {% block title %}Bootstrap blog {% endblock %}
+    {% block scri %}
+      <script>
+        function j_link(){
 
+          location.href='/article/id/'+{{ art.id }};
+
+        }
+      
+      </script>
+    {% endblock %}
   
     {%block content%}
     <section class="article-main">
@@ -18,11 +27,11 @@
                 </div>
               </div>
               <div class="article-content">
-                <p>{{ art.content|truncatechars:150 }}</p>
+                <p>{{ art.content|truncatechars:150|safe }}</p>
                 <p><img width="50%" height="50%" src='{{ art.article_pic.url}}'></p>
               </div>
               <div class="article-read">
-                <button type="button" class="btn btn-info"><a href="article/id/{{1}}">阅读全文</a></button>
+                <button type="button" class="btn btn-info" onclick="location.href='/article/id/'+{{ art.id }};">阅读全文</button>
               </div>
             
                 <footer>

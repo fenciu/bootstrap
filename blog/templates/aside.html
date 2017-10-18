@@ -1,3 +1,13 @@
+<script>
+  function clicks(){
+    $(document).ready(function(){
+      
+      var art_content=$('#search').val();
+      location.href="/search/content/"+art_content;
+    });
+  }
+
+</script>
 <aside class="col-md-4">
     <div class="widget">
       <h4 class="title">标签云</h4>
@@ -7,14 +17,14 @@
         <a class="tab-a" href="#">python<span class="badge tag-badge">2</span></a>
         <a class="tab-a" href="#">nodejs</a>
         <a class="tab-a" href="#">php</a>
-        <a class="tab-a" href="#">c++</a>
+        <a class="tab-a" href="#">{{ar}}</a>
       </div>
     </div>
     <div class="widget">
       <h4 class="title">文章搜索</h4>
       <hr>
-      <div class="input-group">
-        <input type="text" class="form-control input-lg"><span class="input-group-addon btn btn-primary">搜索</span>
+      <div class="input-group">        
+          <input  id="search" type="text" class="form-control input-lg"><span class="input-group-addon btn btn-primary" onclick="clicks()">搜索</span>
       </div>
     </div>
     <div class="widget">

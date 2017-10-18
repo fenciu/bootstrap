@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 
@@ -21,7 +22,7 @@ class article(models.Model):
     title=models.CharField(max_length=50)
     author=models.CharField(max_length=30)
     date=models.DateTimeField(default=timezone.now)
-    content=RichTextField(default=None)
+    content=RichTextUploadingField(default=None)
     article_pic=models.ForeignKey(article_pic,on_delete=models.CASCADE)
     article_tag=models.ForeignKey(article_tag,on_delete=models.CASCADE)
     def __str__(self):

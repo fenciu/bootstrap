@@ -13,16 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib import admin
-from mainsite.views import index,article_de
+from mainsite.views import index,article_de,article_search
 from django.conf import settings
 from django.conf.urls.static import static
 import xadmin
-import ckeditor_uploader
+#import ckeditor_uploader
 urlpatterns = [
     url(r'^$',index),
     url(r'^xadmin/', xadmin.site.urls),
     url(r'^article/id/(\d*)/$',article_de),
-    #url(r'^ckeditor/',ckeditor_uploader.urls)
+    url(r'^ckeditor/',include('ckeditor_uploader.urls')),
+    url(r'^search/content/(.*)/$',article_search),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -126,8 +126,32 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-#+++STATIC_ROOT=os.path.join(BASE_DIR,"static/")
+#STATIC_ROOT=os.path.join(BASE_DIR,"static")
 STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
 MEDIA_URL = '/upload/'
 MEDIA_ROOT=os.path.join(BASE_DIR,"upload")
 CKEDITOR_UPLOAD_PATH = "article_images"
+CKEDITOR_CONFIGS = {
+    # 配置名是default时，django-ckeditor默认使用这个配置
+    'default': {
+        # 使用简体中文
+        'language':'zh-cn',
+        # 编辑器的宽高请根据你的页面自行设置
+        #'width':'730px',
+        #'height':'150px',
+        'image_previewText':' ',
+        'tabSpaces': 4,
+        'toolbar': 'Custom',
+        # 添加按钮在这里
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Format', 'RemoveFormat'],
+            ['NumberedList', 'BulletedList'],
+            ['Blockquote', 'CodeSnippet'],
+            ['Image', 'Link', 'Unlink'],
+            ['Maximize']
+        ],
+        # 插件
+        'extraPlugins': ','.join(['codesnippet','uploadimage','widget','lineutils',]),
+    }
+}
+CKEDITOR_JQUERY_URL = '//cdn.bootcss.com/jquery/2.1.1/jquery.min.js'
